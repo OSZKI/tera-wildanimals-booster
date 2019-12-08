@@ -9,8 +9,15 @@
   "Behavior" : {
     "tree" : "deer"
   },
+  "AttackOnHit" : {
+    "maxDistance" : 15,
+    "speedMultiplier" : 1.2
+  },
   "FleeOnHit" : {
-    "minDistance" : 5
+    "minDistance" : 6
+  },
+  "FindNearbyPlayers": {
+    "searchRadius" : 3
   },
   "BlockDropGrammar": {
     "blockDrops": [],
