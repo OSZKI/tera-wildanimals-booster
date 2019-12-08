@@ -1,0 +1,6 @@
+{
+  sequence: [
+    flee_from_character,
+    { lookup: { tree: "Behaviors:flee" }}
+  ]
+}

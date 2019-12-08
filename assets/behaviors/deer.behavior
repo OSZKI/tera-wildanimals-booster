@@ -1,49 +1,33 @@
 {
   dynamic: [
-      {
-        guard: {
-          componentPresent: "Behaviors:flee",
-          child: {
-            sequence: [
-            check_flee_stop,
+    {
+      guard: {
+        componentPresent: "Behaviors:AttackOnHit",
+        values: ["N instigator exists"],
+        child: { lookup: { tree: "WildAnimals:run_away" }}
+      }
+    },
+    {
+      guard: {
+        componentPresent: "Behaviors:FindNearbyPlayers",
+        values: ["N charactersWithinRange nonEmpty"],
+        child: {
+          sequence: [
+            { sleep: { time: 0.1f }},
+            followCharacter,
             {
               lookup: {
-                tree: "Behaviors:flee"
+                tree: "Behaviors:follow"
               }
             }
-            ]
-          }
+          ]
         }
-      },
-      {
-        sequence : [
-          {
-            set_speed : { speedMultiplier: 0.9 }
-          },
-          {
-            animation : {
-              play: "engine:Walk.animationPool",
-              loop: "engine:Walk.animationPool"
-            }
-          },
-          {
-            lookup: { tree: "Behaviors:doRandomMove" }
-          },
-          {
-            animation : {
-              play: "engine:Stand.animationPool",
-              loop: "engine:Stand.animationPool"
-            }
-          },
-          {
-            set_speed : { speedMultiplier: 0 }
-          },
-          {
-            sleep : {
-              time : 3
-            }
-          }
-        ]
       }
+    },
+    {
+      lookup: {
+        tree: "Behaviors:stray"
+      }
+    }
   ]
 }
